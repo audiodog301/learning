@@ -3,7 +3,6 @@ extern crate cpal;
 
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
 use iced::{button, Align, Button, Column, Element, Sandbox, Settings, Text};
-use std::thread;
 
 struct Saw {
     frequency: f32,
@@ -87,9 +86,10 @@ impl Poly {
 
 #[cfg_attr(target_os = "android", ndk_glue::main(backtrace = "full"))]
 fn main() -> iced::Result {
-    let mut children = vec![];
+    println!("Thank you for choosing spicy software & co!");
 
-    children.push(thread::spawn( move ||  { #[cfg(all(
+    // Conditionally compile with jack if the feature is specified.
+    #[cfg(all(
         any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"),
         feature = "jack"
     ))]
@@ -124,15 +124,10 @@ fn main() -> iced::Result {
         cpal::SampleFormat::F32 => run::<f32>(&device, &config.into()).unwrap(),
         cpal::SampleFormat::I16 => run::<i16>(&device, &config.into()).unwrap(),
         cpal::SampleFormat::U16 => run::<u16>(&device, &config.into()).unwrap(),
-    };}));
-    
-    println!("Thank you for choosing spicy software & co!");
-
-    // Conditionally compile with jack if the feature is specified.
+    };
 
     Counter::run(Settings::default())
-
- }
+}
 
 fn run<T>(device: &cpal::Device, config: &cpal::StreamConfig) -> Result<(), anyhow::Error>
 where
@@ -159,7 +154,9 @@ where
     )?;
     stream.play()?;
 
-    loop {}
+    loop {
+
+    }
 
     Ok(())
 }
@@ -185,7 +182,7 @@ impl Sandbox for Counter {
     }
 
     fn title(&self) -> String {
-        String::from("pidaw - audiodog 301")
+        String::from("Counter - Iced")
     }
 
     fn update(&mut self, message: Message) {
