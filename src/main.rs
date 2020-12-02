@@ -86,7 +86,8 @@ impl Poly {
 
 #[cfg_attr(target_os = "android", ndk_glue::main(backtrace = "full"))]
 fn main() -> iced::Result {
-    
+    println!("Thank you for choosing spicy software & co!");
+
     // Conditionally compile with jack if the feature is specified.
     #[cfg(all(
         any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"),
