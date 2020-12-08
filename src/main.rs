@@ -185,7 +185,7 @@ impl Sandbox for Counter {
     }
 
     fn title(&self) -> String {
-        String::from("pidaw - audiodog 301")
+        String::from("pidaw - audiodog301")
     }
 
     fn update(&mut self, message: Message) {
