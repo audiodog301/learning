@@ -192,9 +192,11 @@ impl Sandbox for Counter {
         match message {
             Message::IncrementPressed => {
                 self.value += 1;
+                println!("inc");
             }
             Message::DecrementPressed => {
                 self.value -= 1;
+                println!("inc");
             }
         }
     }
