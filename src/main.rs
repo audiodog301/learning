@@ -196,7 +196,7 @@ impl Sandbox for Counter {
             }
             Message::DecrementPressed => {
                 self.value -= 1;
-                println!("inc");
+                println!("dec");
             }
         }
     }
