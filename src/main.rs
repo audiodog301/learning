@@ -126,7 +126,7 @@ fn main() -> iced::Result {
         cpal::SampleFormat::U16 => run::<u16>(&device, &config.into()).unwrap(),
     };}));
     
-    println!("Thank you for choosing zesty software");
+    println!("Thank you for choosing doglike software");
 
     // Conditionally compile with jack if the feature is specified.
 
