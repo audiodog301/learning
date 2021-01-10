@@ -126,7 +126,7 @@ fn main() -> iced::Result {
         cpal::SampleFormat::U16 => run::<u16>(&device, &config.into()).unwrap(),
     };}));
     
-    println!("Thank you for choosing spicy software & co!");
+    println!("Thank you for choosing zesty software");
 
     // Conditionally compile with jack if the feature is specified.
 
@@ -145,7 +145,7 @@ where
     let err_fn = |err| eprintln!("an error occurred on stream: {}", err);
 
     let mut saw: Saw = Saw {
-        frequency: 110.0,
+        frequency: 220.0,
         count: 0,
         val: 0.0
     };
